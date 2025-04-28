@@ -1,0 +1,28 @@
+while True:
+    n = int(input())
+    if n == 0:
+        break
+    while True:
+        line = list(map(int, input().split()))
+        if line[0] == 0:
+            break
+
+        target = line
+        stack = []
+        current_coach = 1
+        target_index = 0
+        possible = True
+
+        while target_index < n:
+            if stack and stack[-1] == target[target_index]:
+                stack.pop()
+                target_index += 1
+            elif current_coach <= n:
+                stack.append(current_coach)
+                current_coach += 1
+            else:
+                possible = False
+                break
+
+        print("Yes" if possible else "No")
+    print()
